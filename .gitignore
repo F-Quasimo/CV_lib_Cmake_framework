@@ -13,6 +13,7 @@
 
 # Compiled Dynamic libraries
 *.so
+*.so.*
 *.dylib
 *.dll
 
@@ -33,3 +34,5 @@
 
 _deps/
 opencv-prefix/
+build/
+thirdparty/
