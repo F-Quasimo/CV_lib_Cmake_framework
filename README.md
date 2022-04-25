@@ -20,14 +20,14 @@ step 1.2
 > cmake -S . -B build</br>
 > cmake --build build --target all -j12
 
-or
+or (Which is recommended)
 > mkdir build<br/>
 > cd build<br/>
 > cmake ..<br/>
 > make -j12
 ### Step 2:(for ncnn)
 if cmake from ncnn source :
->sudo apt install build-essential git cmake libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev
+>sudo apt install build-essential git cmake libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils
 
 **esle:(Prefer)**
 >sudo apt install mesa-vulkan-drivers </br>
@@ -40,8 +40,12 @@ PS: change the ncnn directory name from "ncnn-XXXXXXXX-ubuntu-1804" to "ncnn"
 > ./ocvdemo
 
 
-P.S: Building opencv may take some time .. you could increase number of threads
-> cmake --build build --target all -j12
+P.S: 
+1. Building opencv may take some time ..
+2. Anaconda may cause some conflict. please disable anaconda by:
+> conda deactivate </br>
+> mv \~/anaconda3/lib \~/anaconda3/lib_bck
+
 
  make sure the LD_LIBRARY_PATH is updated while running your exectable in the bin/ folder.
 
