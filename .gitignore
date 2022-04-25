@@ -35,7 +35,6 @@
 _deps/
 opencv-prefix/
 build/
-thirdparty/
 cmake_install.cmake
 Makefile
 CMakeFiles/
