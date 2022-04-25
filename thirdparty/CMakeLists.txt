@@ -16,7 +16,7 @@ EXECUTE_PROCESS(
     WORKING_DIRECTORY "${thirdparty_path}"
     RESULT_VARIABLE ncnn
 )
-message("TAG:thirdparty --------------------- tar ncnn------------------ over------------")
+message("TAG:thirdparty --------------------- tar rm ncnn------------------ over------------")
 EXECUTE_PROCESS(
     COMMAND rm -rf ${CMAKE_SOURCE_DIR}/thirdparty/ncnn-20220420-ubuntu-1804
     WORKING_DIRECTORY "${thirdparty_path}"
@@ -49,7 +49,7 @@ FetchContent_Populate(opencv_contrib)
 message("TAG:thirdparty - CMakeLists.txt: CMAKE_CURRENT_SOURCE_DIR:${CMAKE_CURRENT_SOURCE_DIR}")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_script/build_external_project.cmake)
 
-message("TAG:thirdparty - CMakeLists.txt: CMAKE_SOURCE_DIR:${CMAKE_SOURCE_DIR}")
+message("TAG:thirdparty - CMakeLists.txt: CMAKE_SOURCE_DIR:${CMAKE_SOURCE_DIR}\nLINK_OPENCV_SHARED_LIB:${LINK_OPENCV_SHARED_LIB}")
 
 build_external_project(
 	opencv 

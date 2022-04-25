@@ -4,7 +4,7 @@ project(ocvdemo)
 # set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-
+set(LINK_OPENCV_SHARED_LIB OFF)
 # -----------------------  root dir  ------------------------
 aux_source_directory(. DIR_SRCS)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
