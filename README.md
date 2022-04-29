@@ -7,6 +7,15 @@ a dancing game which you can learn to dance.
 a basic opencv environment with static(or dynamic) link library support. a ncnn framework deep-learning model deployment demo. I will create a dancing teaching game in the end. This base demo is easy to turn to other application.
 
 # How to use
+## Notice before start
+
+P.S: 
+1. Building opencv may take some time ..
+2. Anaconda may cause some conflict. please disable anaconda by:
+> conda deactivate </br>
+> mv \~/anaconda3/lib \~/anaconda3/lib_bck
+3. compile and test pass on ubuntu(both Intel and AMD is ok) \ raspberry pi 4B . 
+
 ### Step 1:(for opencv)
 step 1.1
 >sudo apt install build-essential cmake git pkg-config libgtk-3-dev 
@@ -39,14 +48,6 @@ PS: change the ncnn directory name from "ncnn-XXXXXXXX-ubuntu-1804" to "ncnn"
 # RUN:
 > cd /lets_dance/bin </br>
 > ./ocvdemo
-
-
-P.S: 
-1. Building opencv may take some time ..
-2. Anaconda may cause some conflict. please disable anaconda by:
-> conda deactivate </br>
-> mv \~/anaconda3/lib \~/anaconda3/lib_bck
-
 
  make sure the LD_LIBRARY_PATH is updated while running your exectable in the bin/ folder.
 

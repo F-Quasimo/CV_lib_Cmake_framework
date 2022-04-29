@@ -4,21 +4,21 @@ cmake_minimum_required(VERSION 3.14)
 set(ncnn_zip_path "${CMAKE_SOURCE_DIR}/pkgs/ncnn-20220420-ubuntu-1804.zip")
 set(thirdparty_path ${CMAKE_SOURCE_DIR}/thirdparty)
 
+message("TAG:thirdparty -----CMAKE_GENERATOR_PLATFORM---${CMAKE_GENERATOR_PLATFORM}------------- tar rm ncnn------------------ over------------")
+EXECUTE_PROCESS(
+    COMMAND rm -rf ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name}
+    WORKING_DIRECTORY "${thirdparty_path}"
+    RESULT_VARIABLE ncnn
+)
 
 EXECUTE_PROCESS(
-    COMMAND unzip "${CMAKE_SOURCE_DIR}/pkgs/ncnn-20220420-ubuntu-1804.zip"
+    COMMAND unzip ${CMAKE_SOURCE_DIR}/pkgs/${ncnn_zip_name}.zip
     WORKING_DIRECTORY "${thirdparty_path}"
     RESULT_VARIABLE ncnn
 )
-message("TAG:thirdparty --------------------- tar ncnn------------------ over------------")
+message("TAG:thirdparty ------ncnn-zip-name----${ncnn_zip_name}----------- tar ncnn------------------ over------------")
 EXECUTE_PROCESS(
-    COMMAND mv ${CMAKE_SOURCE_DIR}/thirdparty/ncnn-20220420-ubuntu-1804 ${CMAKE_SOURCE_DIR}/thirdparty/ncnn
-    WORKING_DIRECTORY "${thirdparty_path}"
-    RESULT_VARIABLE ncnn
-)
-message("TAG:thirdparty --------------------- tar rm ncnn------------------ over------------")
-EXECUTE_PROCESS(
-    COMMAND rm -rf ${CMAKE_SOURCE_DIR}/thirdparty/ncnn-20220420-ubuntu-1804
+    COMMAND mv ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name} ${CMAKE_SOURCE_DIR}/thirdparty/ncnn
     WORKING_DIRECTORY "${thirdparty_path}"
     RESULT_VARIABLE ncnn
 )

@@ -5,6 +5,23 @@ project(ocvdemo)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LINK_OPENCV_SHARED_LIB OFF)
+message("-----------------------\nplatform:${CMAKE_GENERATOR_PLATFORM}\tCMAKE_ANDROID_ARCH_ABI:${CMAKE_ANDROID_ARCH_ABI}\nCMAKE_ARCHIVE_OUTPUT_DIRECTORY:${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}")
+
+# ------------------------------ PLATFORM CONFIG ---------
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+message(FATAL_ERROR
+    "DO NOT WASTE TIME ON WINDOWS"
+)
+elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")  
+    set(ncnn_zip_name ncnn-20220420-ubuntu-1804)
+    set(OpenCV_DIR 
+    ${CMAKE_SOURCE_DIR}/thirdparty/opencv/lib/cmake/opencv4
+    CACHE PATH "Directory that contains OpenCVConfig.cmake"
+)
+else()
+    set(ncnn_zip_name other_unknown)
+endif()
+
 # -----------------------  root dir  ------------------------
 aux_source_directory(. DIR_SRCS)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
