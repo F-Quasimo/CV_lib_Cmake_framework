@@ -6,14 +6,18 @@
 #include <iostream>
 #include "yolox.h"
 #include "time.h"
-int main()
-{
+int main(int argc, char* argv[]){
    
     std::cout << "OpenCV version : " << CV_VERSION << std::endl;
     std::cout << "Major version : " << CV_MAJOR_VERSION << std::endl;
     std::cout << "Minor version : " << CV_MINOR_VERSION << std::endl;
     std::cout << "Subminor version : " << CV_SUBMINOR_VERSION << std::endl;
-    cv::VideoCapture cap(0);
+    cv::VideoCapture cap(std::stoi(argv[1]));
+    cap.open(std::stoi(argv[1]));
+    cap.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
+    //cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
+    //cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
+    //cap.set(cv::CAP_PROP_FPS, 30);
     if(!cap.isOpened())
 	{
 		std::cout << "open camera failed. " << std::endl;
