@@ -12,12 +12,13 @@ int main(int argc, char* argv[]){
     std::cout << "Major version : " << CV_MAJOR_VERSION << std::endl;
     std::cout << "Minor version : " << CV_MINOR_VERSION << std::endl;
     std::cout << "Subminor version : " << CV_SUBMINOR_VERSION << std::endl;
-    cv::VideoCapture cap(std::stoi(argv[1]));
+    cv::VideoCapture cap(std::stoi(argv[1])+cv::CAP_DSHOW);
+
     cap.open(std::stoi(argv[1]));
     cap.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
-    //cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
-    //cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
-    //cap.set(cv::CAP_PROP_FPS, 30);
+    cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
+    cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
+    cap.set(cv::CAP_PROP_FPS, 30);
     if(!cap.isOpened())
 	{
 		std::cout << "open camera failed. " << std::endl;

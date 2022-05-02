@@ -52,9 +52,9 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_script/build_external_project.cmake)
 message("TAG:thirdparty - CMakeLists.txt: CMAKE_SOURCE_DIR:${CMAKE_SOURCE_DIR}\nLINK_OPENCV_SHARED_LIB:${LINK_OPENCV_SHARED_LIB}")
 
 build_external_project(
-	opencv 
-	${PROJECT_BINARY_DIR}/external
-	${CMAKE_SOURCE_DIR}/pkgs/opencv-4.5.0.zip
+    opencv 
+    ${PROJECT_BINARY_DIR}/external
+    ${CMAKE_SOURCE_DIR}/pkgs/opencv-4.5.0.zip
         -DBUILD_opencv_core=ON
         -DBUILD_opencv_highgui=ON
         -DBUILD_opencv_imgproc=ON
@@ -63,13 +63,14 @@ build_external_project(
         -DBUILD_EXAMPLES:BOOL=FALSE
         -DBUILD_TESTS:BOOL=FALSE
         -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-		-DBUILD_SHARED_LIBS:BOOL=${LINK_OPENCV_SHARED_LIB}
+        -DBUILD_SHARED_LIBS:BOOL=${LINK_OPENCV_SHARED_LIB}
         -DBUILD_NEW_PYTHON_SUPPORT:BOOL=OFF
         -DBUILD_WITH_DEBUG_INFO=OFF
         -DWITH_CUDA:BOOL=FALSE
         -DWITH_FFMPEG:BOOL=TRUE
-        -DWITH_GSTREAMER:BOOL=TRUE
-        -DWITH_MSMF:BOOL=FALSE
+        -DWITH_GSTREAMER:BOOL=OFF
+        -DWITH_MSMF:BOOL=ON
+        -DWITH_V4L:BOOL=ON
         -DWITH_IPP:BOOL=FALSE
         -DBUILD_PERF_TESTS:BOOL=FALSE
         -DBUILD_PNG:BOOL=ON
@@ -78,6 +79,6 @@ build_external_project(
         -DBUILD_FAT_JAVA_LIB=OFF
         -DWITH_EIGEN:BOOL=ON
         -USE_EIGEN=${thirdparty_path}/eigen/include/eigen3
-	    -DCMAKE_INSTALL_PREFIX:PATH=${thirdparty_path}/opencv
-		-DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_SOURCE_DIR}/modules
+        -DCMAKE_INSTALL_PREFIX:PATH=${thirdparty_path}/opencv
+        -DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_SOURCE_DIR}/modules
 )
