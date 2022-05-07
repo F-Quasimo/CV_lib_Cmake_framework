@@ -12,9 +12,9 @@ int main(int argc, char* argv[]){
     std::cout << "Major version : " << CV_MAJOR_VERSION << std::endl;
     std::cout << "Minor version : " << CV_MINOR_VERSION << std::endl;
     std::cout << "Subminor version : " << CV_SUBMINOR_VERSION << std::endl;
-    cv::VideoCapture cap(std::stoi(argv[1])+cv::CAP_DSHOW);
+    cv::VideoCapture cap(0+cv::CAP_DSHOW);
 
-    cap.open(std::stoi(argv[1]));
+    cap.open(0);
     cap.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
     cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);
@@ -25,15 +25,15 @@ int main(int argc, char* argv[]){
 		return -1;
 	}
     cv::Mat frame;
-    YoloX yolox(0.25);
+    YoloX yolox("yolox_nano.param","yolox_nano.bin",0.4, true);
     while(true)
 	{
 		cap >> frame;  
 		if(!frame.empty())
 		{
             std::vector<Object> objects;
-            yolox.detect_yolox(frame, objects);
-            yolox.draw_objects(frame, objects);
+            yolox.Detect(frame, objects);
+            yolox.Draw(frame, objects);
 			cv::imshow("camera", frame);
 		}
 		

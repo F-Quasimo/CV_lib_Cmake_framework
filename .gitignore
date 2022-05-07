@@ -12,10 +12,10 @@
 *.pch
 
 # Compiled Dynamic libraries
-*.so
+#*.so
 *.so.*
 *.dylib
-*.dll
+#*.dll
 
 # Fortran module files
 *.mod
@@ -24,8 +24,8 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
-*.lib
+#*.a
+#*.lib
 
 # Executables
 *.exe
@@ -35,6 +35,5 @@
 _deps/
 opencv-prefix/
 build/
-cmake_install.cmake
 Makefile
 CMakeFiles/

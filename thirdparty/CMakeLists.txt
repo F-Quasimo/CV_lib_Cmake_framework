@@ -1,27 +1,27 @@
 cmake_minimum_required(VERSION 3.14)
 # make and build opencv immediately
 # set(PROJECT_NAME "ocvdemo")
-set(ncnn_zip_path "${CMAKE_SOURCE_DIR}/pkgs/ncnn-20220420-ubuntu-1804.zip")
-set(thirdparty_path ${CMAKE_SOURCE_DIR}/thirdparty)
+# set(ncnn_zip_path "${CMAKE_SOURCE_DIR}/pkgs/ncnn-20220420-ubuntu-1804.zip")
 
-message("TAG:thirdparty -----CMAKE_GENERATOR_PLATFORM---${CMAKE_GENERATOR_PLATFORM}------------- tar rm ncnn------------------ over------------")
-EXECUTE_PROCESS(
-    COMMAND rm -rf ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name}
-    WORKING_DIRECTORY "${thirdparty_path}"
-    RESULT_VARIABLE ncnn
-)
 
-EXECUTE_PROCESS(
-    COMMAND unzip ${CMAKE_SOURCE_DIR}/pkgs/${ncnn_zip_name}.zip
-    WORKING_DIRECTORY "${thirdparty_path}"
-    RESULT_VARIABLE ncnn
-)
-message("TAG:thirdparty ------ncnn-zip-name----${ncnn_zip_name}----------- tar ncnn------------------ over------------")
-EXECUTE_PROCESS(
-    COMMAND mv ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name} ${CMAKE_SOURCE_DIR}/thirdparty/ncnn
-    WORKING_DIRECTORY "${thirdparty_path}"
-    RESULT_VARIABLE ncnn
-)
+# message("TAG:thirdparty -----CMAKE_GENERATOR_PLATFORM---${CMAKE_GENERATOR_PLATFORM}------------- tar rm ncnn------------------ over------------")
+# EXECUTE_PROCESS(
+#     COMMAND rm -rf ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name}
+#     WORKING_DIRECTORY "${thirdparty_path}"
+#     RESULT_VARIABLE ncnn
+# )
+
+# EXECUTE_PROCESS(
+#     COMMAND unzip ${CMAKE_SOURCE_DIR}/pkgs/${ncnn_zip_name}.zip
+#     WORKING_DIRECTORY "${thirdparty_path}"
+#     RESULT_VARIABLE ncnn
+# )
+# message("TAG:thirdparty ------ncnn-zip-name----${ncnn_zip_name}----------- tar ncnn------------------ over------------")
+# EXECUTE_PROCESS(
+#     COMMAND mv ${CMAKE_SOURCE_DIR}/thirdparty/${ncnn_zip_name} ${CMAKE_SOURCE_DIR}/thirdparty/ncnn
+#     WORKING_DIRECTORY "${thirdparty_path}"
+#     RESULT_VARIABLE ncnn
+# )
 
 # ------------------ Eigen --------------------------
 # EXECUTE_PROCESS(
@@ -35,7 +35,8 @@ EXECUTE_PROCESS(
 #     WORKING_DIRECTORY "${thirdparty_path}"
 #     RESULT_VARIABLE eigen
 # )
-
+if (RE_CMAKE_OPENCV)
+message("RE_CMAKE_OPENCV ON :${RE_CMAKE_OPENCV}")
 include(FetchContent)
 FetchContent_Declare(
 	opencv_contrib
@@ -45,6 +46,7 @@ FetchContent_Declare(
     PREFIX opencv_contrib
 )
 FetchContent_Populate(opencv_contrib)
+message("TAG:thirdparty - CMakeLists.txt: thirdparty_path:${thirdparty_path}")
 
 message("TAG:thirdparty - CMakeLists.txt: CMAKE_CURRENT_SOURCE_DIR:${CMAKE_CURRENT_SOURCE_DIR}")
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_script/build_external_project.cmake)
@@ -78,7 +80,10 @@ build_external_project(
         -DBUILD_WITH_STATIC_CRT:BOOL=OFF
         -DBUILD_FAT_JAVA_LIB=OFF
         -DWITH_EIGEN:BOOL=ON
-        -USE_EIGEN=${thirdparty_path}/eigen/include/eigen3
+        -USE_EIGEN=Eigen3_INCLUDE
         -DCMAKE_INSTALL_PREFIX:PATH=${thirdparty_path}/opencv
         -DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_SOURCE_DIR}/modules
 )
+else()
+message("RE_CMAKE_OPENCV OFF :${RE_CMAKE_OPENCV}")
+endif()
