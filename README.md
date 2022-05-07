@@ -1,14 +1,30 @@
-# lets_dance
-a dancing game which you can learn to dance.
+# CV_lib_Cmake_framework
+a cv-lib framework contain : OpenCV \ NCNN \ Eigen3 and more over vill come soon. support:
+1. executable file generate; (*.a; *.lib; *.exe; [also] *.so; *.dll)
+2. OpenCV
+3. ncnn
+4. Eigen3
+5. ubuntu with OpenCV src
+6. visual studio 2019 with OpenCV prebuild static lib
+7. raspberry pi 4B runs ok with ncnn_rebuilded(appoint ncnn_DIR in CMakeLists.txt)
 
-# Just Starting this respo.currently opencv static lib cmake from source is ok.
+# Current Status:
+support cmake_from_source_on_ubuntu and prebuild_static_lib_on_visual_studio_2019_without_vulkan. 
 
-# what it can do
-a basic opencv environment with static(or dynamic) link library support. a ncnn framework deep-learning model deployment demo. I will create a dancing teaching game in the end. This base demo is easy to turn to other application.
+# TBD:
+1. ~~config ncnn from *.a or src~~(finish)
+2. config c++ GUI api,such as https://github.com/cycfi/elements
+3. better module organization
+4. onnx runtime support
+5. libtorch support
+6. PCL \ Vulkan support
+
+# what can it do
+a basic lib framework; friendly for iterator; a quick demo runs on familiar platform.
 
 # How to use
-## Notice before start
-
+## For Ubuntu:
+### Notice before start
 P.S: 
 1. Building opencv may take some time ..
 2. Anaconda may cause some conflict. please disable anaconda by:
@@ -43,17 +59,24 @@ if cmake from ncnn source :
 >Download ncnn release package at https://github.com/Tencent/ncnn/releases with ".a" lib, unzip to thirdparty directory. which means you will get XXX/thirdparty/ncnn/bin path etc.</br>
 >I prepare a ncnn release pkg in pkgs, and it will automatically unzip to thirdparty/ncnn. if you need gpu support ,just install vulkan driver is ok.
 
-PS: change the ncnn directory name from "ncnn-XXXXXXXX-ubuntu-1804" to "ncnn"
+PS: change the ncnn directory name from "ncnn-XXXXXXXX-ubuntu-1804" to right one and rewrite ncnn_DIR in CMakeLists.txt
 
 # RUN:
 > cd /lets_dance/bin </br>
-> ./ocvdemo
+> ./ocvdemo xxx
 
  make sure the LD_LIBRARY_PATH is updated while running your exectable in the bin/ folder.
 
-# TBD:
-1. ~~config ncnn from *.a or src~~(finish)
-2. config c++ GUI api,such as https://github.com/cycfi/elements
+## For Windows
+
+### install visual studio 2019
+### Step1: opencv and ncnn *.lib is ready in thirdparty/xxx
+1. you may have to modify or rebuild ncnn with MT mode if necessary
+2. you may have to modify or rebuild opencv static_lib if necessary
+
+### Step2: cmd cmake or cmake-gui to generate build folder and project
+
+### Step3: open visual studio 2019 project and run.
 
 # Reference
 https://github.com/Tencent/ncnn/wiki/how-to-build#build-for-linux
