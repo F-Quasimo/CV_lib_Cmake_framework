@@ -51,7 +51,7 @@
 #define HAVE_D3D9
 
 /* Eigen Matrix & Linear Algebra Library */
-/* #undef HAVE_EIGEN */
+#define HAVE_EIGEN
 
 /* Geospatial Data Abstraction Library */
 /* #undef HAVE_GDAL */
