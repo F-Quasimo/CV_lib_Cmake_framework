@@ -8,6 +8,7 @@ a cv-lib framework contain : OpenCV \ NCNN \ Eigen3 and more over vill come soon
 6. visual studio 2019 with OpenCV prebuild static lib
 7. raspberry pi 4B runs ok with ncnn_rebuilded(appoint ncnn_DIR in CMakeLists.txt)
 <img src="./pic_img/demo.png" width = "800" height = "400" alt="base detection demo" title="base detection demo" /> 
+
 # Current Status:
 support cmake_from_source_on_ubuntu and prebuild_static_lib_on_visual_studio_2019_without_vulkan. 
 

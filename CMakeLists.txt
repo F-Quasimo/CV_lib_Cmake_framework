@@ -76,17 +76,17 @@ find_package(Eigen3)
 set(Eigen3_INCLUDE ${thirdparty_path}/eigen/include/eigen3)
 message("root:Eigen: ${Eigen3_LIBRARY}")
 
-#------------------------ src and include --------------------
+#------------------------ modules and include --------------------
 
 INCLUDE_DIRECTORIES(${PROJECT_NAME}
     # ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/src/yolox
+    ${CMAKE_SOURCE_DIR}/modules/yolox
 )
 # include_directories(${PROJECT_NAME} ${OPENCV_INCLUDE}
 # #${CMAKE_SOURCE_DIR}/thirdparty/eigen/include/eigen3
 # )
 
-add_subdirectory(src)
+add_subdirectory(modules)
 
 add_executable(${PROJECT_NAME} 
     ${DIR_SRCS}
