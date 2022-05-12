@@ -44,8 +44,8 @@ step 1.1
 
 step 1.2
 
-> git clone https://github.com/F-Quasimo/lets_dance.git</br>
-> cd lets_dance</br> 
+> git clone https://github.com/F-Quasimo/CV_lib_Cmake_framework.git</br>
+> cd CV_lib_Cmake_framework</br> 
 > mkdir build<br/>
 > cd build<br/>
 > cmake ..<br/>
@@ -63,7 +63,7 @@ if cmake from ncnn source :
 PS: change the ncnn directory name from "ncnn-XXXXXXXX-ubuntu-1804" to right one and rewrite ncnn_DIR in CMakeLists.txt
 
 # RUN:
-> cd /lets_dance/bin </br>
+> cd /CV_lib_Cmake_framework/bin </br>
 > ./ocvdemo xxx
 
  make sure the LD_LIBRARY_PATH is updated while running your exectable in the bin/ folder.
