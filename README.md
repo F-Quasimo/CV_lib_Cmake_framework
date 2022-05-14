@@ -19,6 +19,7 @@ support cmake_from_source_on_ubuntu and prebuild_static_lib_on_visual_studio_201
 4. onnx runtime support
 5. libtorch support
 6. PCL \ Vulkan support
+7. **Current visual studio 2019 cmake build opencv_static_lib as debug mode. So, currently use prebuild static_lib instead.**
 
 # what can it do
 a basic lib framework; friendly for iterator; a quick demo runs on familiar platform.

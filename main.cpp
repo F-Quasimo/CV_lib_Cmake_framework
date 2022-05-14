@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     return -1;
   }
   cv::Mat frame;
-  YoloX yolox(0.4);
+  YoloX yolox(0.4, false);
   while (true) {
     cap >> frame;
     if (!frame.empty()) {
