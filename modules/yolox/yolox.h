@@ -1,10 +1,11 @@
 #ifndef __YOLOX_H__
 #define __YOLOX_H__
+#include <opencv2/core/core.hpp>
+#include <vector>
+
 #include "net.h"
 #include "yolox_nano.id.h"
 #include "yolox_nano.mem.h"
-#include <opencv2/core/core.hpp>
-#include <vector>
 
 // Jetson Nano overclocked to 2014 MHz
 // YoloX Nano  | size=416 | model=yoloxN.* | 17.61 FPS | 25.8 mAP
@@ -18,7 +19,7 @@ struct Object {
 enum YOLOX_LOAD_MODE { YOLOX_LOAD_FROM_HEAD = 0, YOLOX_LOAD_FROM_FILE = 2 };
 
 class YoloX {
-public:
+ public:
   YoloX();
   YoloX(float prob_thresh, bool use_vulkan = false, int target_width = 416,
         int target_height = 416, float nms_thresh = 0.45f);
@@ -34,7 +35,7 @@ public:
   int Detect(const cv::Mat &bgr, std::vector<Object> &objects);
   int Draw(cv::Mat &bgr, const std::vector<Object> &object);
 
-private:
+ private:
   int Load(const char *modeltype, int _target_size, const float *_mean_vals,
            const float *_norm_vals, bool use_gpu);
   int load_from_head_detect(const cv::Mat &bgr, std::vector<Object> &objects);

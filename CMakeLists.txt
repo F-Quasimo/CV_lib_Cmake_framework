@@ -55,7 +55,7 @@ set(OpenCV_SHARED OFF)
 set(OpenCV_STATIC ON)
 find_package( OpenCV )
 if( OpenCV_FOUND )
-list( APPEND ThirdParty_LIBS ${OpenCV_LIBS} )
+    list( APPEND ThirdParty_LIBS ${OpenCV_LIBS} )
     include_directories( ${OpenCV_INCLUDE_DIRS} )
     message("***************OpenCV_INCLUDE_DIRS:${OpenCV_INCLUDE_DIRS}")
     LINK_DIRECTORIES()
@@ -77,22 +77,24 @@ set(Eigen3_INCLUDE ${thirdparty_path}/eigen/include/eigen3)
 message("root:Eigen: ${Eigen3_LIBRARY}")
 
 #------------------------ modules and include --------------------
+add_subdirectory(modules)
 
 INCLUDE_DIRECTORIES(${PROJECT_NAME}
     # ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/modules/yolox
+    ${LIB_COMMON_INCLUDE_DIRS}
 )
 # include_directories(${PROJECT_NAME} ${OPENCV_INCLUDE}
 # #${CMAKE_SOURCE_DIR}/thirdparty/eigen/include/eigen3
 # )
 
-add_subdirectory(modules)
-
 add_executable(${PROJECT_NAME} 
     ${DIR_SRCS}
 )
 
-message("root:DIR_SRCS: ${DIR_SRCS}")
+message("root:DIR_SRCS: ${DIR_SRCS}"
+"LIB_COMMON_INCLUDE_DIRS:"${LIB_COMMON_INCLUDE_DIRS}
+)
 # link_directories(${PROJECT_NAME}
 # ${OpenCV_DIR}
 # )
@@ -100,4 +102,5 @@ message("-----OPENCV_LIBS_lib:${OPENCV_LIBS_lib}")
 target_link_libraries(${PROJECT_NAME}
     ${OpenCV_LIBS} 
     LIB_YOLOX
+    LIB_COMMON
 )
