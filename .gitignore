@@ -37,3 +37,4 @@ opencv-prefix/
 build/
 Makefile
 CMakeFiles/
+modules/common/
